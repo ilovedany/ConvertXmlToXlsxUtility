@@ -9,7 +9,7 @@ class Program{
 
         XmlDocument xDoc = new XmlDocument();
         
-        xDoc.Load("C:/XmlFiles/12.xml"); //первый параметр - путь к xml файлу
+        xDoc.Load(args[0]); //первый параметр - путь к xml файлу
 
         XmlElement? xRoot = xDoc.DocumentElement;
 
@@ -19,12 +19,11 @@ class Program{
 
         WorksheetColumns worksheetColumns = new WorksheetColumns();
 
-
+        string[] columns = new string[args.Length-2];
+        Array.Copy(args, 2, columns, 0, columns.Length);
 
         int lineCount = 0;
         int countLine = 1;
-        string[] columns = {"ТабНом","ФИО","УчебноеЗаведение","Специальность","ПрежняяДолжность","ДатаНазначенияНаПрежнююДолжность","НоваяДолжность","ДатаНазначения"};
-
         string[] columns2 = new string[columns.Length - 4];
         Array.Copy(columns, 4, columns2, 0, columns2.Length); 
 
@@ -59,6 +58,6 @@ class Program{
             }
         }
         worksheet.AllocatedRange.AutoFitColumns();
-        workbook.SaveToFile("C:/XmlFiles/dany.xlsx", ExcelVersion.Version2016);
+        workbook.SaveToFile(args[1], ExcelVersion.Version2016);
     }
 }

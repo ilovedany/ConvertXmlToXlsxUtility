@@ -19,6 +19,9 @@ class Program{
 
         WorksheetColumns worksheetColumns = new WorksheetColumns();
 
+
+        FileInfo xmlFile = new FileInfo(args[0]);
+
         string[] columns = new string[args.Length-2];
         Array.Copy(args, 2, columns, 0, columns.Length);
 
@@ -59,5 +62,7 @@ class Program{
         }
         worksheet.AllocatedRange.AutoFitColumns();
         workbook.SaveToFile(args[1], ExcelVersion.Version2016);
+        xmlFile.Delete();
+
     }
 }

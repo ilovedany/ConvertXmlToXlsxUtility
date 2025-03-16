@@ -14,10 +14,10 @@ namespace ConvertXmlToXlsxUtility
             }
         }
         //метод для заполнения данных
-        public void WorkingWithXml(XmlElement xmlElement,Workbook workbook,int countLine, string[] columns, int position){
+        public void WorkingWithXml(XmlNode xmlNode,Workbook workbook,int countLine, string[] columns, int position){
             foreach(var c in columns){
                 position++;
-                workbook.Worksheets[0].Range[countLine,position].Value = xmlElement[c]?.InnerText;
+                workbook.Worksheets[0].Range[countLine,position].Value = xmlNode[c]?.InnerText;
             }   
         }
         //метод для объединения строк
@@ -26,6 +26,9 @@ namespace ConvertXmlToXlsxUtility
                 workbook.Worksheets[0].Range[a,i,c,i].Merge();
             }   
         }
+        
+
+
 
     }
 }
